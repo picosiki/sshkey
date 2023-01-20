@@ -1,0 +1,4 @@
+---
+- hosts: Centos7
+  roles:
+    - { role: sshkey }
