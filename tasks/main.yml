@@ -1,0 +1,9 @@
+---
+# tasks file for my-role
+- name: add users
+  user: name={{ item.name }} password={{ item.password }} shell=/bin/bash groups=wheel append=yes
+  with_items: "{{ ssh_users }}" 
+
+- name: Set ssh keys
+  authorized_key: user={{ item.name }} key="{{ item.key }}" state={{ item.state }}
+  with_items: "{{ ssh_users }}" 
